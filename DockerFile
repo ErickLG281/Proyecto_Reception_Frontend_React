@@ -1,0 +1,27 @@
+FROM node:20.11.1 AS build
+
+# Configura el directorio de trabajo en el contenedor
+WORKDIR /app
+
+# Copia los archivos necesarios para instalar las dependencias
+COPY package*.json ./
+
+# Instala las dependencias
+RUN npm install
+
+# Copia el resto del código de tu aplicación
+COPY . .
+
+# Construye la aplicación para producción
+RUN npm run build
+
+# Usa una imagen ligera para servir la aplicación (como Nginx)
+FROM nginx:alpine
+
+# Copia los archivos de construcción al directorio de Nginx
+COPY --from=build /app/build /usr/share/nginx/html
+
+# Cambia el puerto si deseas usar algo distinto al predeterminado (opcional)
+EXPOSE 3001
+
+CMD ["nginx", "-g", "daemon off;"]

@@ -27,7 +27,7 @@ pipeline {
             steps {
                 script {
                    
-                    bat 'npm run build'  /
+                    bat 'npm run build'  
                 }
             }
         }

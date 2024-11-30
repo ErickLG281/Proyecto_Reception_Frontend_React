@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const companyApi = axios.create({
-    baseURL: 'http://localhost:8081/company'
+    baseURL: 'https://whole-phones-march.loca.lt/company'
 })
 export const getReceptions = (id) => companyApi.get(`/category/${id}`)
 

@@ -1,6 +1,5 @@
-import axios from 'axios'
-
+import axios from 'axios';
 const categoryApi = axios.create({
-    baseURL: 'http://localhost:8081/category'
-})
-export const searchCategories = () => categoryApi.get('/get')
+    baseURL: 'https://whole-phones-march.loca.lt/category',
+});
+export const searchCategories = () => categoryApi.get('/get');

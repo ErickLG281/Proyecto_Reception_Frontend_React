@@ -22,6 +22,6 @@ FROM nginx:alpine
 COPY --from=build /app/build /usr/share/nginx/html
 
 # Cambia el puerto si deseas usar algo distinto al predeterminado (opcional)
-EXPOSE 3001
+EXPOSE 3000
 
 CMD ["nginx", "-g", "daemon off;"]
